@@ -22,14 +22,4 @@ class DetailTableViewController: UIViewController {
     
     }
     
-//    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//      if segue.identifier == "mySegue" {
-//        label.text = receiveValue
-//        print("Detail view controller: \(receiveValue!)")
-//
-//      }
-//
-//    }
-   
-
 }

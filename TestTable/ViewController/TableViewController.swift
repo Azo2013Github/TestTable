@@ -93,23 +93,12 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         performSegue(withIdentifier: "mySegue", sender: self)
    }
 
-    /* func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?){
-        print("entra aqui")
-        if (segue.identifier == "mySegue") {
-            // initialize new view controller and cast it as your view controller
-            let detailViewController = segue.destination as? DetailTableViewController
-            print("datos \(detailViewController!) que se va pasando \(value!)")
-            // your new view controller should have property that will store passed value
-            detailViewController!.receiveValue = value
-            
-        }
-    }*/
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         print("entra aqui")
         if (segue.identifier == "mySegue") {
             // initialize new view controller and cast it as your view controller
             let detailViewController = segue.destination as? DetailTableViewController
-            
+
             // your new view controller should have property that will store passed value
             detailViewController!.receiveValue = value
             print(detailViewController!.receiveValue ?? value!)
