@@ -14,11 +14,13 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
             ["car", "moto", "bicycle"], ["Patinete", "Barco", "monopatin"]
           ]
   var sections: [String] = ["vehicules1", "vehicules2"]
+    
+  // Variable para pasar de la actividad a la detailViewController:
+    var value: String?
+    
   override func viewDidLoad() {
         super.viewDidLoad()
-
-       
-    }
+  }
 
     // MARK: - Table view data source
 
@@ -69,5 +71,49 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
      
+    /*func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+        println("You selected cell #\(indexPath.row)!")
+
+        // Get Cell Label
+        let indexPath = tableView.indexPathForSelectedRow!
+        let currentCell = tableView.cellForRowAtIndexPath(indexPath)! as UITableViewCell
+
+        valueToPass = currentCell.textLabel.text
+        performSegueWithIdentifier("yourSegueIdentifer", sender: self)
+    }*/
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        
+        let indexPath = tableView.indexPathForSelectedRow!
+        let cell = tableView.cellForRow(at: indexPath)! as UITableViewCell
+        
+        value = cell.textLabel?.text
+        print(value!)
+        performSegue(withIdentifier: "mySegue", sender: self)
+   }
+
+    /* func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?){
+        print("entra aqui")
+        if (segue.identifier == "mySegue") {
+            // initialize new view controller and cast it as your view controller
+            let detailViewController = segue.destination as? DetailTableViewController
+            print("datos \(detailViewController!) que se va pasando \(value!)")
+            // your new view controller should have property that will store passed value
+            detailViewController!.receiveValue = value
+            
+        }
+    }*/
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("entra aqui")
+        if (segue.identifier == "mySegue") {
+            // initialize new view controller and cast it as your view controller
+            let detailViewController = segue.destination as? DetailTableViewController
+            
+            // your new view controller should have property that will store passed value
+            detailViewController!.receiveValue = value
+            print(detailViewController!.receiveValue ?? value!)
+        }
+    }
   
 }

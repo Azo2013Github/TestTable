@@ -11,19 +11,25 @@ import UIKit
 class DetailTableViewController: UIViewController {
 
   @IBOutlet var label: UILabel!
+ var receiveValue: String?
+    
   override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        label!.text = receiveValue
+        print("Value: \(String(describing: label!.text))")
+    
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-      if segue.identifier == "mySegue" {
-        let tableViewController = segue.destination as! TableViewController
-        
-      }
-      
-    }
+//    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//      if segue.identifier == "mySegue" {
+//        label.text = receiveValue
+//        print("Detail view controller: \(receiveValue!)")
+//
+//      }
+//
+//    }
    
 
 }
